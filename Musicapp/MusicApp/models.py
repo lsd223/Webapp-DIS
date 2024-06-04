@@ -47,7 +47,7 @@ def insert_user(username, password):
 def select_artist(name):
     cur = conn.cursor()
     sql = """
-    SELECT * FROM artist WHERE name ILIKE %s
+    SELECT * FROM artist WHERE name = %s
     """
     cur.execute(sql, (name))
     artists = cur.fetchall()
@@ -57,7 +57,7 @@ def select_artist(name):
 def select_song(title):
     cur = conn.cursor()
     sql = """
-    SELECT * FROM song WHERE title ILIKE %s
+    SELECT * FROM song WHERE title = %s
     """
     cur.execute(sql, (title))
     songs = cur.fetchall()
@@ -67,7 +67,7 @@ def select_song(title):
 def select_profanity(word):
     cur = conn.cursor()
     sql = """
-    SELECT * FROM profanity WHERE word ILIKE %s
+    SELECT * FROM profanity WHERE word = %s
     """
     cur.execute(sql, (word))
     profanity_words = cur.fetchall()
