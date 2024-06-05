@@ -1,6 +1,6 @@
 # write all your SQL queries in this file.
 
-from MusicApp import conn, login_manager
+from Musicapp import conn, login_manager
 from flask_login import UserMixin
 from psycopg2 import sql
 
