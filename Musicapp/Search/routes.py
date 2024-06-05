@@ -1,11 +1,10 @@
-from flask import Flask, render_template, url_for, flash, redirect, request, Blueprint
-from MusicApp import app, conn, bcrypt
-from MusicApp.models import search_songs_by_title, search_songs_by_artist, search_songs_by_genre
+from flask import render_template, url_for, redirect, request, Blueprint
+from Musicapp import app
+from Musicapp.models import search_songs_by_title, search_songs_by_artist, search_songs_by_genre
 
-# app = Flask(__name__)
+Search = Blueprint('Login', __name__)
 
-
-@app.route('/', methods = ['GET','POST'])
+@Search.route('/', methods = ['GET','POST'])
 def indexpage():
     '''Returns the landing page of the search engine web application'''
     if request.method == 'GET':
@@ -15,7 +14,7 @@ def indexpage():
         search_type = request.form['search_type']
         return redirect(url_for('results',query = query, search_type = search_type))
 
-@app.route('/search', methods=['GET', 'POST'])
+@Search.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == "POST":
         query = request.form['query']

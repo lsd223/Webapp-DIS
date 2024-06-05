@@ -1,9 +1,9 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user
 
-from MusicApp import app, conn, bcrypt
-from MusicApp.forms import UserSignupForm, LoginForm
-from MusicApp.models import insert_user, select_user
+from Musicapp import bcrypt
+from Musicapp.forms import UserSignupForm, LoginForm
+from Musicapp.models import insert_user, select_user
 
 
 Login = Blueprint('Login', __name__)
@@ -21,9 +21,9 @@ def about():
 def register():
     form = UserSignupForm()
     if form.validate_on_submit():
-        
+        insert_user(form.username.data, form.password.data)
         flash('Your account has been created!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(url_for('Login.login'))
     return render_template('register.html', title='Register', form=form)
 
 
@@ -38,7 +38,7 @@ def login():
             login_user(user, remember=True)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('Login.home'))
-    return render_template('pages/login.html', form=form)
+    return render_template('login.html', form=form)
 
 
 

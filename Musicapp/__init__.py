@@ -23,6 +23,12 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
-if __name__ == "__main__":
-    app.run(debug=True)
+from Musicapp.Login.routes import Login
+app.register_blueprint(Login)
+# from Search import routes
+# app.register_blueprint(routes)
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
