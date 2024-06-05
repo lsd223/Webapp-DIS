@@ -11,9 +11,9 @@ INSERT INTO songs(name,artist_id,genre) VALUES
 ('Umbrella',1,'pop'),
 ('Over',2,'hiphop');
 
-INSERT INTO profanity (name) VALUES
-('fuck'),
-('hell');
+-- INSERT INTO profanity (name) VALUES
+-- ('fuck'),
+-- ('hell');
 
 
 -- Song contains Curse

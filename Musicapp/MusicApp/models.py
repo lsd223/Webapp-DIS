@@ -64,6 +64,7 @@ def select_song(title):
     cur.close()
     return songs
 
+#profanity has not been implemented in all files yet..
 def select_profanity(word):
     cur = conn.cursor()
     sql = """
@@ -74,6 +75,46 @@ def select_profanity(word):
     cur.close()
     return profanity_words
 
+def search_songs_by_title(title):
+    cur = conn.cursor()
+    sql = """
+    SELECT songs.name, artist.name, songs.genre
+    FROM songs
+    JOIN artist ON songs.artist_id = artist.artist_id
+    WHERE songs.name = %s
+    """
+    cur.execute(sql,title)
+    results = cur.fetchall()
+    cur.close()
+    return results
+
+
+def search_songs_by_artist(artist_name):
+    cur = conn.cursor()
+    sql = """
+    SELECT songs.name, artist.name, songs.genre
+    FROM songs
+    JOIN artist ON songs.artist_id = artist.artist_id
+    WHERE artist.name = %s
+    """
+    cur.execute(sql,artist_name)
+    results = cur.fetchall()
+    cur.close()
+    return results
+
+def search_songs_by_genre(genre):
+    cur = conn.cursor()
+    sql = """
+    SELECT songs.name, artist.name, songs.genre
+    FROM songs
+    JOIN artist ON songs.artist_id = artist.artist_id
+    WHERE songs.genre = %s
+    """
+    cur.execute(sql,genre)
+    results = cur.fetchall()
+    cur.close()
+    return results
+    
 
 def select_user(username):
     cur = conn.cursor()

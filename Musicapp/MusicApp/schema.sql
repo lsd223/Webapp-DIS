@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS songs(
     FOREIGN KEY artist_id REFERENCES Artist(artist_id)
 );
 
-CREATE TABLE IF NOT EXISTS profanity(
-	profanity_id integer PRIMARY KEY,
-    name varchar(255)
-);
+-- CREATE TABLE IF NOT EXISTS profanity(
+-- 	profanity_id integer PRIMARY KEY,
+--     name varchar(255)
+-- );
 
 -- CREATE TABLE IF NOT EXISTS song_profanity (
 --     song_id INTEGER NOT NULL,
@@ -46,8 +46,3 @@ CREATE TABLE IF NOT EXISTS profanity(
 --   ;
 
 
--- \i sql_ddl/vw_cd_sum.sql
--- \i sql_ddl/vw_invest_accounts.sql
--- \i sql_ddl/vw_invest_certificates.sql
--- \i sql_ddl/vw_tdw.sql
--- \i sql_ddl/ddl-customers-001-add.sql

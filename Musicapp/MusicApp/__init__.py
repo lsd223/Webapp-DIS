@@ -23,4 +23,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
+if __name__ == "__main__":
+    app.run(debug=True)
 
