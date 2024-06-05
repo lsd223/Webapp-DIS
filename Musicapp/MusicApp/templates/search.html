@@ -1,17 +1,40 @@
-search.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Search Results</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
 </head>
 <body>
-    <h1>Search</h1>
-    <form method="POST" action="{{ url_for('Search.search') }}">
-        {{ form.hidden_tag() }}
-        {{ form.query.label }} {{ form.query }}
-        {{ form.submit }}
-    </form>
+    <div class="container">
+        <h1>Search Results</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Song</th>
+                        <th>Artist</th>
+                        <th>Genre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result[0] }}</td>
+                            <td>{{ result[1] }}</td>
+                            <td>{{ result[2] }}</td>
+                            <td>{{ result[3] if result[3] else 'None' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+        <a href="{{ url_for('indexpage') }}">Back to Search</a>
+    </div>
 </body>
 </html>
