@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
@@ -18,15 +18,15 @@
                         <th>Song</th>
                         <th>Artist</th>
                         <th>Genre</th>
+                        <th>Profanity</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for result in results %}
                         <tr>
-                            <td>{{ result[0] }}</td>
-                            <td>{{ result[1] }}</td>
-                            <td>{{ result[2] }}</td>
-                            <td>{{ result[3] if result[3] else 'None' }}</td>
+                            <td>{{ result.title }}</td>
+                            <td>{{ result.artist }}</td>
+                            <td>{{ result.genre if result.genre else 'None'}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -34,7 +34,7 @@
         {% else %}
             <p>No results found.</p>
         {% endif %}
-        <a href="{{ url_for('indexpage') }}">Back to Search</a>
+        <a href="{{ url_for('main.home') }}">Back to Search</a>
     </div>
 </body>
 </html>
