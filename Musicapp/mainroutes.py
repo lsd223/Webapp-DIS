@@ -1,12 +1,13 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user
-from Musicapp import app, bcrypt
+from Musicapp import bcrypt
 from Musicapp.forms import UserSignupForm, LoginForm
 from Musicapp.models import insert_user, select_user, search_songs_by_title, search_songs_by_artist, search_songs_by_genre
 
 main = Blueprint('main', __name__)
 
 @main.route("/", methods=['GET', 'POST'])
+
 @main.route("/home", methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -55,11 +56,11 @@ def search():
     search_type = request.args.get('search_type')
     
     if search_type == 'song':
-        result = str(search_songs_by_title(query))
+        result = search_songs_by_title(query)
     elif search_type == 'artist':
-        result = str(search_songs_by_artist(query))
+        result = search_songs_by_artist(query)
     elif search_type == 'genre':
-        result = str(search_songs_by_genre(query))
+        result = search_songs_by_genre(query)
     else:
         return render_template('search.html', error='Invalid')
     

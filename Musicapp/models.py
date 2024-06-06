@@ -64,16 +64,6 @@ def select_song(title):
     cur.close()
     return songs
 
-#profanity has not been implemented in all files yet..
-def select_profanity(word):
-    cur = conn.cursor()
-    sql = """
-    SELECT * FROM profanity WHERE word = %s
-    """
-    cur.execute(sql, (word))
-    profanity_words = cur.fetchall()
-    cur.close()
-    return profanity_words
 
 def search_songs_by_title(title):
     cur = conn.cursor()
@@ -83,10 +73,11 @@ def search_songs_by_title(title):
     JOIN artist ON songs.artist_id = artist.artist_id
     WHERE songs.name = %s
     """
-    cur.execute(sql,title)
+    cur.execute(sql,(title,))
     results = cur.fetchall()
     cur.close()
-    return results
+    return [{'title': row[0], 'artist': row[1], 'genre': row[2]} for row in results]
+
 
 
 def search_songs_by_artist(artist_name):
@@ -97,10 +88,10 @@ def search_songs_by_artist(artist_name):
     JOIN artist ON songs.artist_id = artist.artist_id
     WHERE artist.name = %s
     """
-    cur.execute(sql,artist_name)
+    cur.execute(sql,(artist_name,))
     results = cur.fetchall()
     cur.close()
-    return results
+    return [{'title': row[0], 'artist': row[1], 'genre': row[2]} for row in results]
 
 def search_songs_by_genre(genre):
     cur = conn.cursor()
@@ -110,10 +101,10 @@ def search_songs_by_genre(genre):
     JOIN artist ON songs.artist_id = artist.artist_id
     WHERE songs.genre = %s
     """
-    cur.execute(sql,genre)
+    cur.execute(sql,(genre,))
     results = cur.fetchall()
     cur.close()
-    return results
+    return [{'title': row[0], 'artist': row[1], 'genre': row[2]} for row in results]
     
 
 def select_user(username):
