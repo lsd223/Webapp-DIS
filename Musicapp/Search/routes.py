@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request, Blueprint
 from Musicapp import app
 from Musicapp.models import search_songs_by_title, search_songs_by_artist, search_songs_by_genre
 
-Search = Blueprint('Login', __name__)
+Search = Blueprint('Search', __name__)
 
 @Search.route('/', methods = ['GET','POST'])
 def indexpage():

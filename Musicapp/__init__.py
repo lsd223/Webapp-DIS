@@ -25,10 +25,7 @@ login_manager.login_message_category = 'info'
 
 from Musicapp.Login.routes import Login
 app.register_blueprint(Login)
-# from Search import routes
-# app.register_blueprint(routes)
+from Musicapp.Search.routes import Search
+app.register_blueprint(Search)
 
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
 
