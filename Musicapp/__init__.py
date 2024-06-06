@@ -20,12 +20,8 @@ bcrypt = Bcrypt(app)
 #SESSION_TYPE = 'filesystem'
 
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'main.login'
 login_manager.login_message_category = 'info'
 
-from Musicapp.Login.routes import Login
-app.register_blueprint(Login)
-from Musicapp.Search.routes import Search
-app.register_blueprint(Search)
-
-
+from Musicapp.mainroutes import main
+app.register_blueprint(main)

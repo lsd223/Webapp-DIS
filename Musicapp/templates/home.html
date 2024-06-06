@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Welcome to Music Profanity Search</h1>
         <nav>
-            <a href="{{ url_for('Login.home') }}">Home</a>
-            <a href="{{ url_for('Login.about') }}">About</a>
-            <a href="{{ url_for('Login.register') }}">Register</a>
-            <a href="{{ url_for('Login.login') }}">Login</a>
-            <a href="{{ url_for('Login.logout') }}">Logout</a>
+            <a href="{{ url_for('main.home') }}">Home</a>
+            <a href="{{ url_for('main.about') }}">About</a>
+            <a href="{{ url_for('main.register') }}">Register</a>
+            <a href="{{ url_for('main.login') }}">Login</a>
+            <a href="{{ url_for('main.logout') }}">Logout</a>
         </nav>
         <div class="search-container">
-            <form method="POST" action="{{ url_for('Search.indexpage') }}">
+            <form method="POST" action="{{ url_for('main.home') }}">
                 <label for="search_type">Search by:</label>
                 <select name="search_type" id="search_type">
                     <option value="song">Song</option>
