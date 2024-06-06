@@ -3,9 +3,6 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import psycopg2
 
-#from flask import session
-#from flask_session import Session
-
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'fc089b9218301ad987914c53481bff04'
