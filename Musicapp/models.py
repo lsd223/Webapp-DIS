@@ -3,6 +3,7 @@
 from Musicapp import conn, login_manager
 from flask_login import UserMixin
 from psycopg2 import sql
+import re
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -66,6 +67,8 @@ def select_song(title):
 
 
 def search_songs_by_title(title):
+    #if not re.match(r'^\w+$', title):
+    #   raise ValueError("Invalid title. Please provide a valid title with only alphanumeric characters.")
     cur = conn.cursor()
     sql = """
     SELECT songs.name, artist.name, songs.genre
@@ -81,6 +84,8 @@ def search_songs_by_title(title):
 
 
 def search_songs_by_artist(artist_name):
+    #if not re.match(r'^\w+$', artist_name):
+    #   raise ValueError("Invalid artist name. Please provide a valid title with only alphanumeric characters.")
     cur = conn.cursor()
     sql = """
     SELECT songs.name, artist.name, songs.genre
@@ -94,6 +99,8 @@ def search_songs_by_artist(artist_name):
     return [{'title': row[0], 'artist': row[1], 'genre': row[2]} for row in results]
 
 def search_songs_by_genre(genre):
+    #if not re.match(r'^\w+$', genre):
+    #   raise ValueError("Invalid genre. Please provide a valid title with only alphanumeric characters.")
     cur = conn.cursor()
     sql = """
     SELECT songs.name, artist.name, songs.genre
